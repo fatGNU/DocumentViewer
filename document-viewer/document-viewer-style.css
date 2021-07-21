@@ -1,0 +1,109 @@
+.curtain{
+    z-index: 2000;
+    width: 100vw;
+    height: 94.2vh;
+    /*background: url('../background__blocker_images/86_background_image_dark.png') fixed no-repeat;*/
+    background: url('../background__blocker_images/86_background_image_light.png') fixed no-repeat;
+    background-size: 100%;
+}
+.spacer-row{
+    height: 6vh;
+    width: 100%;
+    background: blue;
+}
+
+.white-space{
+    background: #FFFFFF;
+}
+
+.control-bar{
+    position: absolute;
+    display: flex;
+    top: 4vh;
+    width: 96%;
+}
+
+.file-viewer{
+    margin: 0 auto;
+    height: 79vh;
+    padding: 20px;
+    background: #FFFFFF;
+    /*background: url('../background__blocker_images/86_background_image_dark.png') fixed no-repeat;*/
+    background: url('../background__blocker_images/86_background_image_light.png') fixed no-repeat;
+    background-size: 99%;
+}
+
+.thumbnail{
+    margin-bottom: 4%;
+    margin-left: 32%;
+    font-family: "Roboto Thin", Serif;
+    padding: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    width: 60%;
+    height: 36%;
+    box-shadow:0px 1px 8px -4px #191818 ;
+    border-radius: 2px;
+}
+
+.thumbnail-vertical-list{
+    border-right: 1px solid #d0d0d6;
+    padding: 4px;
+    height: 79vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;/*ionekane kama kuna kitu*/
+}
+
+.thumbnail-horizontal-list{
+    border: 1px solid #d0d0d6;
+    width: 60%;
+    margin-left: 19%;
+    padding: 4px;
+    height: 24vh;
+    overflow: hidden;
+    overflow-x: scroll;
+    scrollbar-width: none;/*ionekane kama kuna kitu*/
+}
+
+.file-name-label{
+    text-align: center;
+    padding-top: 4px;
+    bottom: -10px;
+    height: 30px;
+    color: #4565e3;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    font-family: noto-sans-medium, serif;
+}
+
+.rename-tool{
+    position: absolute;
+    top: 24vh;
+    left: 20vw;
+    z-index: 2001;
+    width: 20vw;
+    height: 20vh;
+    background: #FFFFFF;
+    border-radius: 0.1em;
+    padding: 4px;
+}
+.rename-title{
+    color: #4565e3;
+    border-bottom: 2px solid #4565e3;
+    text-align: center;
+    align-items: center;
+    display: block;
+}
+.title-text{
+    padding-top: 1.3em;
+    font-size: 1.1em;
+    color: #800080;
+    text-transform: capitalize;
+    text-align: center;
+    /*font-weight: 700;*/
+    font-family: noto-sans-medium;
+}
+.viewer-tools{
+    background: #FFFFFF;
+}

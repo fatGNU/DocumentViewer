@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {row, col12} from "./ColFunction";
+import {row, col12, paraphrase} from "../MiscUtils";
 
 /**
  *
@@ -18,19 +18,27 @@ export default class ThumbNail extends Component {
     }
 
     render = () => {
-        return (<div onClick={() => {this.callback(this.filename)}} className={`${row} thumbnail`}>
-            <div className={col12}>
-                <div className={row}
-                     style={{height: '82%', width: '115%', border: '1px solid'}}>
-                    <object type={this.fileType}
-                            data={this.filecontent}/>
-                </div>
-                <div className={row}>
-                    <div className={`${col12} file-name-label`}>
-                        {this.filename}
+        return (
+            <div className={row}>
+                <div className={col12} onClick={() => {
+                        this.callback(this.filename)
+                    }}>
+                    <div className={`${row} thumbnail`}>
+                        <div className={col12}>
+                            <div className={row}>
+                                <object type={this.fileType}
+                                        data={this.filecontent}
+                                />
+                            </div>
+                            <div className={row}>
+                                <div className={`${col12} file-name-label`}>
+                                    {/*paraphrase long names and limit them by default to 15 characters*/}
+                                    {paraphrase(this.filename, 15)}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>);
+            </div>);
     }
 }

@@ -1,3 +1,25 @@
+/**
+fade out toolbar or something ontop of the current document or object
+ */
+@keyframes fade_off_document {
+    from{
+        opacity: 1.0;
+    }
+    to{
+        opacity: 0.3;
+    }
+}
+/**
+fade in a toolbar or something ontop of the current document or object
+ */
+@keyframes fade_on_document{
+    from{
+        opacity: 0.3;
+    }
+    to{
+        opacity: 1.0;
+    }
+}
 .curtain{
     position: fixed;
     top: 0;
@@ -20,12 +42,19 @@
 }
 
 .control-bar{
-    position: absolute;
+    position: fixed;
     display: flex;
-    /* position: fixed; */
-
-    top: 4%;
-    width: 96%;
+    width: 72%;
+    height: 72px;
+    top: 16%;
+    left: 64%;
+    opacity: 0.4;
+}
+.control-bar:hover{
+    animation: fade_on_document 0.3s linear forwards;
+}
+.control-bar:not(:hover){
+    animation: fade_off_document 0.2 linear reverse;
 }
 
 .file-viewer{
@@ -40,12 +69,13 @@
 
 .thumbnail{
     margin-bottom: 4%;
-    margin-left: 32%;
+    margin-left: 12%;
     font-family: "Roboto Thin", Serif;
     padding: 4px;
     font-size: 1em;
     cursor: pointer;
-    width: 60%;
+    width: 70%;
+    z-index: inherit;
     height: max-content;/*fit-content !important;*/
     box-shadow:0px 1px 8px -4px #191818 ;
     border-radius: 2px;

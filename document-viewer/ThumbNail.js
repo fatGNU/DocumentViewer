@@ -19,15 +19,16 @@ export default class ThumbNail extends Component {
 
     render = () => {
         return (
-            <div className={row} onClick={() => {
+            <div className={row}>
+                <div className={col12} onClick={() => {
                         this.callback(this.filename)
                     }}>
-                <div className={col12}>
                     <div className={`${row} thumbnail`}>
                         <div className={col12}>
                             <div className={row}>
                                 <object type={this.fileType}
-                                        data={this.filecontent}/>
+                                        data={this.filecontent}
+                                />
                             </div>
                             <div className={row}>
                                 <div className={`${col12} file-name-label`}>

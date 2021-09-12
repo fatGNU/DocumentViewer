@@ -20,22 +20,20 @@ class ThumbNailList extends Component {
             //by default, load the document viewer
             console.warn(`<${this.constructor.name} />`)
         } : props.thumbnailcallback;
-        // for (let t in this.state.documentsList) {
-        //     const documentName = Object.getOwnPropertyNames(this.state.documentsList[t]);//get the filename
-        //     this.thumbnails[t] = <ThumbNail callback={this.thumbnailcallback}
-        //                                     filename={`${documentName[0]}`}
-        //                                     filecontent={`${this.state.documentsList[t][documentName[0]]}`}/>
-        // }
+        // this.showDocumentThumbnails();
     }
 
 
-    componentWillReceiveProps(nextProps, nextContext) {
+    UNSAFE_componentWillReceiveProps(nextProps, nextContext) {
         //new documents lists
-        this.setState({documentsList: nextProps.documents});
         // console.log('state changed into ', nextProps.documents);
         //construct new items out of these props
-        if(nextProps !== null)
-            this.showDocumentThumbnails(nextProps.documents);
+        // console.log(nextProps.documents, nextProps.documents[0] !== undefined);
+        if (nextProps.documents[0] !== undefined && nextProps.documents !== null) {
+            this.setState({documentsList: nextProps.documents}, () => {
+                this.showDocumentThumbnails(nextProps.documents);
+            });
+        }
     }
 
     /**
@@ -46,13 +44,15 @@ class ThumbNailList extends Component {
      * @param documentsList list of documents to render and create thumbnails.
      *
      */
-    showDocumentThumbnails = (documentsList = []) => {
+    showDocumentThumbnails = (documentsList = this.props.documents) => {
         this.thumbnails = [];//nullify existing thumbnails
-        for (let t in this.state.documentsList) {
-            const documentName = Object.getOwnPropertyNames(this.state.documentsList[t]);//get the filename
+        for (let t in documentsList) {
+            // documentsList[t] is a JSON object consisting of the name, category and
+            // content(as base64 string) of the document
+            const currentDocument = documentsList[t];//get the filename
             this.thumbnails[t] = <ThumbNail callback={this.thumbnailcallback}
-                                            filename={`${documentName[0]}`}
-                                            filecontent={`${this.state.documentsList[t][documentName[0]]}`}/>
+                                            filename={currentDocument.name}
+                                            filecontent={currentDocument.content}/>
         }
         this.setState(state => {
             state.documentsList = documentsList;
@@ -80,12 +80,12 @@ export class VerticalThumbNailList extends ThumbNailList {
                         <div className={`${col1} title`}
                              style={{
                                  bottom: 10,
-                                 fontStyle: 'italic',
                                  color: '#800080'
                              }}>{this.state.thumbnails === null ? 0 : this.state.thumbnails.length}</div>
                     </div>
                 </div>
             </div>
+
             {this.state.thumbnails}
         </div>);
     }
